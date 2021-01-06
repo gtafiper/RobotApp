@@ -1,0 +1,18 @@
+:host {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  color: black;
+}
+
+.main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+
+}
+
+.content {
+  grid-column: 2;
+}

@@ -1,0 +1,59 @@
+<form (ngSubmit)="submitHandler()" [formGroup]="updateRobot">
+  <mat-card *ngIf="updateRobot">
+    <mat-card-header>
+      <label *ngIf="robot.name" class="mat-card-title" style="flex: auto; margin: auto">{{robot.name}}</label>
+      <label *ngIf="!robot.name" class="mat-card-title" style="flex: auto; margin: auto">No Name</label>
+      <button (click)="switchActivation()" mat-icon-button type="button">
+        <mat-icon *ngIf="active">keyboard_arrow_up</mat-icon>
+        <mat-icon *ngIf="!active">keyboard_arrow_down</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content *ngIf="active">
+      <div class="mat-card-content flex-inlined-collum spaced-around-big">
+        <mat-form-field *ngIf="edit">
+          <input formControlName="name" matInput placeholder="Name" required type="text"/>
+          <mat-error *ngIf="name.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="!edit" class="spaced-around max-length-input">
+          <input [value]="robot.name" disabled="true" matInput placeholder="Name" type="text">
+        </mat-form-field>
+        <mat-form-field *ngIf="edit">
+          <input formControlName="email" matInput placeholder="email" required type="email"/>
+          <mat-error *ngIf="email.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="!edit" class="spaced-around max-length-input">
+          <input [value]="robot.email" disabled="true" matInput placeholder="Email" type="text">
+        </mat-form-field>
+        <mat-form-field *ngIf="!edit" class="spaced-around max-length-input">
+          <input [value]="robot.uid" disabled="true" matInput placeholder="Id" type="text">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-divider *ngIf="active"></mat-divider>
+    <mat-card-actions *ngIf="active">
+      <div style="display: flex; flex-direction: row">
+        <button (click)="onEdit()" *ngIf="!edit" class="spaced-side" color="accent" mat-raised-button
+                style="width: 100px"
+                type="button">Edit
+        </button>
+        <button *ngIf="edit" class="spaced-side" color="accent" mat-raised-button style="width: 100px" type="submit">
+          Save
+        </button>
+        <button (click)="onCancel()" *ngIf="edit" class="spaced-side" color="accent" mat-raised-button
+                style="width: 100px"
+                type="button">
+          Cancel
+        </button>
+        <div style="flex:1"></div>
+        <button (click)="deleteRobot(robot)" class="spaced-side" color="warn" mat-icon-button type="button">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card-actions>
+
+  </mat-card>
+</form>

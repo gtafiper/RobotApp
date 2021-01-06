@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "robotapp-153a9": {
+      "hosting": {
+        "RobotApp": [
+          "robotapp-153a9"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "robotapp-153a9"
+  }
+}

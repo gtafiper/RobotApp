@@ -1,0 +1,43 @@
+<form (ngSubmit)="submitHandler()" [formGroup]="form">
+  <mat-card>
+    <mat-card-header>
+    <label class="mat-card-title">Add new Robot</label>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <div class="mat-card-content flex-inlined-collum spaced-around-big">
+        <mat-form-field style="padding: 10px">
+          <input formControlName="name" matInput placeholder="Name" type="text" required>
+          <mat-error *ngIf="name.hasError('required')">
+            name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field style="padding: 10px">
+          <input formControlName="password" matInput placeholder="Password" type="password" required>
+            <mat-error *ngIf="password.hasError('required')">
+            password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="password.hasError('minlength')">
+            password must be at least <strong>6</strong> characters long
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field style="padding: 10px">
+          <input formControlName="email" matInput placeholder="Email" type="text" required>
+          <mat-error *ngIf="email.hasError('email')">
+            Provided email is not a valid email
+          </mat-error>
+          <mat-error *ngIf="password.hasError('required')">
+            email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+      <div></div>
+      <button mat-raised-button type="submit" [disabled]="form.invalid">Save</button>
+      <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,16 @@
+<mat-toolbar class="nav">
+  <div *ngIf="auth.authUser$ | async">
+    <div *ngIf="user.role === 'Human'">
+      <button>
+        <mat-icon (click)="router.navigate(['home'])">home</mat-icon>
+      </button>
+      <span class="spacer"> </span>
+    </div>
+  </div>
+  <span class="spacer"></span>
+  <div *ngIf="auth.authUser$ | async">
+    <a style="margin-right: 2%">The current user is {{user.name}} with the role of {{user.role}}</a>
+    <button id="signOutBT" mat-raised-button (click)="signOut()">Log out</button>
+  </div>
+</mat-toolbar>
+

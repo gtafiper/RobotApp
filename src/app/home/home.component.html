@@ -1,0 +1,25 @@
+<div class="Body" *ngIf="!(auth.authUser$ | async)">
+<h1 class="header">Esbjerg Kommune robot oversigt</h1>
+<div class="center">
+  <button id="LoginBt" type="button" class="glow-on-hover" (click)="Login()" >Login</button>
+</div>
+</div>
+  <div class="Body" *ngIf="auth.authUser$ | async">
+ <div *ngIf="!isHuman">
+      <button style="margin-top: 7%" id="cheatLog" mat-raised-button (click)="router.navigate(['chatForRobot'])">Chat Log</button>
+    </div>
+
+    <div class="center" ng *ngIf="isHuman">
+      <h1>Welcome {{user.name}}</h1>
+      <div class="grid-container">
+        <div class="item1"  style="margin-right: 15%">
+      <button class="glow-on-hover2" mat-raised-button (click)="router.navigate(['robots'])">Robot overview</button>
+        </div>
+        <div class="item2">
+      <button mat-raised-button (click)="router.navigate(['chatOverview'])">Robot Logs</button>
+    </div>
+      </div>
+  </div>
+</div>
+
+
